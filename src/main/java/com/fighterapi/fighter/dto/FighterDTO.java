@@ -1,6 +1,7 @@
 package com.fighterapi.fighter.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fighterapi.fighter.model.FighterRecord;
 import com.fighterapi.fighter.model.FighterType;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -18,13 +19,7 @@ public class FighterDTO {
 
     private int id;
 
-    @NotNull(message = "Name is required")
-    private String name;
-
-    @NotNull(message = "Lastname is required")
-    private String lastName;
-
-    @JsonIgnore
+    @NotNull(message = "FullName is required")
     private String fullName;
 
     @NotNull(message = "Birthday is required")
@@ -46,5 +41,7 @@ public class FighterDTO {
 
     @JsonIgnore
     private int years;
+
+    private FighterRecord record;
 
 }

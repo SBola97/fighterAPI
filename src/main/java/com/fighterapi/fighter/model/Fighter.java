@@ -42,4 +42,8 @@ public class Fighter {
     @NotNull
     @Enumerated(EnumType.STRING)
     private FighterType type;
+
+    private int wins;
+
+    private int loses;
 }

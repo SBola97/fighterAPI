@@ -10,13 +10,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
 
 @Slf4j
 @Service
@@ -92,7 +89,7 @@ public class FighterService implements IFighterService {
     private void getFighterAge(FighterDTO resultDTO) {
         var fighterAge = calculateAge(resultDTO.getBirthday());
         resultDTO.setYears(fighterAge);
-        resultDTO.setFullName(resultDTO.getName().concat(" " + resultDTO.getLastName()));
+        resultDTO.setFullName(resultDTO.getFullName());
         log.info("The fighter {} is {} years old", resultDTO.getFullName(), resultDTO.getYears());
     }
 

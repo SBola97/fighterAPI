@@ -2,7 +2,9 @@ package com.fighterapi.fighter.controller;
 
 import com.fighterapi.fighter.dto.FighterDTO;
 import com.fighterapi.fighter.model.FighterType;
+import com.fighterapi.fighter.model.MatchRequest;
 import com.fighterapi.fighter.service.FighterService;
+import com.fighterapi.fighter.service.MatchMakingService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,6 +19,9 @@ public class FighterController {
 
     @Autowired
     private FighterService fighterService;
+
+    @Autowired
+    private MatchMakingService matchMakingService;
 
     @GetMapping("/list")
     private List<FighterDTO> listFighters(){
@@ -47,4 +52,13 @@ public class FighterController {
         fighterService.deleteFighter(fighterId);
     }
 
+    @GetMapping("/matchmaking/{id}")
+    private List<FighterDTO> findMatch(@PathVariable (value = "id") int fighterId){
+        return matchMakingService.findMatch(fighterId);
+    }
+
+    @GetMapping("/matchmaking")
+    private List<FighterDTO> findMatch(@Valid @RequestBody MatchRequest matchRequest){
+        return matchMakingService.findMatch(matchRequest);
+    }
 }
