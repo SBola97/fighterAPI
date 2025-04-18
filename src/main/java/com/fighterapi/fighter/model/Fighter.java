@@ -1,5 +1,7 @@
 package com.fighterapi.fighter.model;
 
+import com.fighterapi.fighter.model.enums.Belt;
+import com.fighterapi.fighter.model.enums.FighterType;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -46,4 +48,6 @@ public class Fighter {
     private int wins;
 
     private int loses;
+
+    //private Belt belt;
 }

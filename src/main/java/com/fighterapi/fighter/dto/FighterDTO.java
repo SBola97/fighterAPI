@@ -1,8 +1,9 @@
 package com.fighterapi.fighter.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fighterapi.fighter.model.enums.Belt;
 import com.fighterapi.fighter.model.FighterRecord;
-import com.fighterapi.fighter.model.FighterType;
+import com.fighterapi.fighter.model.enums.FighterType;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.Max;
@@ -43,5 +44,7 @@ public class FighterDTO {
     private int years;
 
     private FighterRecord record;
+
+    //private Belt belt;
 
 }

@@ -1,4 +1,4 @@
-package com.fighterapi.fighter.model;
+package com.fighterapi.fighter.model.enums;
 
 public enum FighterType {
     Boxeo,

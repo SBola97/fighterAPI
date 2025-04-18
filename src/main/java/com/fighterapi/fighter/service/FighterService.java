@@ -3,7 +3,7 @@ package com.fighterapi.fighter.service;
 import com.fighterapi.fighter.dto.FighterDTO;
 import com.fighterapi.fighter.exceptions.FighterNotFoundException;
 import com.fighterapi.fighter.mapper.FighterMapper;
-import com.fighterapi.fighter.model.FighterType;
+import com.fighterapi.fighter.model.enums.FighterType;
 import com.fighterapi.fighter.repository.FighterRepository;
 import com.fighterapi.fighter.service.interfaces.IFighterService;
 import lombok.extern.slf4j.Slf4j;

@@ -24,7 +24,7 @@ public class FighterExceptionHandler {
         return new ResponseEntity<>(body, HttpStatus.NOT_FOUND);
     }
 
-    @ExceptionHandler(Exception.class)
+    @ExceptionHandler({Exception.class, StrategyNotFoundException.class})
     public ResponseEntity<Map<String, Object>> handleGenericException(Exception exception){
         Map<String, Object> body = new HashMap<>();
         body.put("timestamp", LocalDateTime.now());

@@ -1,5 +1,6 @@
 package com.fighterapi.fighter.model;
 
+import com.fighterapi.fighter.model.enums.FighterType;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.Max;

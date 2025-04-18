@@ -1,7 +1,7 @@
 package com.fighterapi.fighter.controller;
 
 import com.fighterapi.fighter.dto.FighterDTO;
-import com.fighterapi.fighter.model.FighterType;
+import com.fighterapi.fighter.model.enums.FighterType;
 import com.fighterapi.fighter.model.MatchRequest;
 import com.fighterapi.fighter.service.FighterService;
 import com.fighterapi.fighter.service.MatchMakingService;
@@ -54,7 +54,7 @@ public class FighterController {
 
     @GetMapping("/matchmaking/{id}")
     private List<FighterDTO> findMatch(@PathVariable (value = "id") int fighterId){
-        return matchMakingService.findMatch(fighterId);
+        return matchMakingService.findMatchStrategy(fighterId);
     }
 
     @GetMapping("/matchmaking")

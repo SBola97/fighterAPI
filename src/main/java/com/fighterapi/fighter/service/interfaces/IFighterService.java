@@ -1,7 +1,7 @@
 package com.fighterapi.fighter.service.interfaces;
 
 import com.fighterapi.fighter.dto.FighterDTO;
-import com.fighterapi.fighter.model.FighterType;
+import com.fighterapi.fighter.model.enums.FighterType;
 
 import java.util.List;
 
