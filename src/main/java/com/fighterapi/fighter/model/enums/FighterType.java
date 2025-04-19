@@ -2,13 +2,13 @@ package com.fighterapi.fighter.model.enums;
 
 public enum FighterType {
     Boxeo,
-    Grappling,
+    JiuJitsu,
     MMA,
     Taekwondo,
-    Kickboxing,
-    Muaythai,
+    KickBoxing,
+    MuayThai,
     Karate,
-    Sambo,
+    CombatSambo,
     Wrestling,
     Judo
 }

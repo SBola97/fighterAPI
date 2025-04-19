@@ -59,6 +59,6 @@ public class FighterController {
 
     @GetMapping("/matchmaking")
     private List<FighterDTO> findMatch(@Valid @RequestBody MatchRequest matchRequest){
-        return matchMakingService.findMatch(matchRequest);
+        return matchMakingService.findMatchByName(matchRequest);
     }
 }

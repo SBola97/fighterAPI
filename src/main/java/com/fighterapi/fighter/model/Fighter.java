@@ -49,5 +49,6 @@ public class Fighter {
 
     private int loses;
 
-    //private Belt belt;
+    @Enumerated(EnumType.STRING)
+    private Belt belt;
 }

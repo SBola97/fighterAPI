@@ -45,7 +45,7 @@ public class MatchMakingService {
     }
 
     @Transactional(readOnly = true)
-    public List<FighterDTO> findMatch(MatchRequest matchRequest) {
+    public List<FighterDTO> findMatchByName(MatchRequest matchRequest) {
         var candidates = fighterRepository.findAll();
 
         return candidates.stream()

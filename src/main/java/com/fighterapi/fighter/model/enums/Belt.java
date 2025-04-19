@@ -1,18 +1,18 @@
 package com.fighterapi.fighter.model.enums;
 
 public enum Belt {
-    Amarillo,
-    Amarilloverde,
-    Azul,
-    Azulrojo,
-    Blanco,
-    Blancoamarillo,
-    Gris,
-    Marron,
-    Naranja,
-    Negro,
-    Purpura,
-    Rojo,
-    Rojonegro,
-    Verde
+    Black,
+    Blue,
+    BlueRed,
+    Brown,
+    Green,
+    GreenBlue,
+    Orange,
+    Purple,
+    Red,
+    RedBlack,
+    White,
+    WhiteYellow,
+    Yellow,
+    YellowGreen
 }

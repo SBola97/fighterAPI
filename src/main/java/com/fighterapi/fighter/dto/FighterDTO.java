@@ -1,6 +1,7 @@
 package com.fighterapi.fighter.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fighterapi.fighter.model.enums.Belt;
 import com.fighterapi.fighter.model.FighterRecord;
 import com.fighterapi.fighter.model.enums.FighterType;
@@ -33,7 +34,7 @@ public class FighterDTO {
 
     @NotNull(message = "Height is required")
     @Min(value = 130, message = "Minimum height allowed 130cm")
-    @Max(value = 220,  message = "Maximum height allowed 220cm")
+    @Max(value = 220, message = "Maximum height allowed 220cm")
     private float height;
 
     @NotNull(message = "FighterType is required")
@@ -45,6 +46,7 @@ public class FighterDTO {
 
     private FighterRecord record;
 
-    //private Belt belt;
-
+    @Enumerated(EnumType.STRING)
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private Belt belt;
 }

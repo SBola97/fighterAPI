@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.List;
+import java.util.Optional;
 
 @Slf4j
 @Service
@@ -21,6 +22,9 @@ public class FighterService implements IFighterService {
 
     @Autowired
     private FighterRepository fighterRepository;
+
+    @Autowired
+    private BeltValidator beltValidator;
 
     @Autowired
     private FighterMapper mapper;
@@ -40,16 +44,21 @@ public class FighterService implements IFighterService {
     @Transactional(readOnly = true)
     public List<FighterDTO> listFightersByType(FighterType type) {
         try {
-            return fighterRepository.findByType(type);
+            return mapper.fightersToFighterDTO(fighterRepository.findByType(type));
         }
         catch (RuntimeException exception) {
-            throw new RuntimeException("There was an error finding the list of" + type, exception);
+            log.info("Error fetching list of {} due to {}", type, exception.getMessage());
+            throw new RuntimeException("There was an error fetching the list of " + type, exception);
         }
     }
 
     @Override
     @Transactional
     public FighterDTO createFighter(FighterDTO fighterDTO) {
+        var optionalBelt = Optional.ofNullable(fighterDTO.getBelt());
+        if(optionalBelt.isPresent()){
+            beltValidator.validateOrThrow(fighterDTO.getType(), fighterDTO.getBelt());
+        }
         var fighter = mapper.fighterDTOToFighter(fighterDTO);
         fighterRepository.save(fighter);
 

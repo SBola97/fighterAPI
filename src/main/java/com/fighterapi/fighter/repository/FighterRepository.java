@@ -8,6 +8,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface FighterRepository extends JpaRepository<Fighter,Integer> {
-    List<FighterDTO> findByType(FighterType type);
+    List<Fighter> findByType(FighterType type);
 
 }
