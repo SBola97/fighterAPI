@@ -10,6 +10,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -22,6 +23,7 @@ public class FighterDTO {
     private int id;
 
     @NotNull(message = "FullName is required")
+    @Pattern(regexp = "^[A-Za-zÀ-ÿ]+(?: [A-Za-zÀ-ÿ]+)*$", message = "Full name must contain only letters and single spaces")
     private String fullName;
 
     @NotNull(message = "Birthday is required")

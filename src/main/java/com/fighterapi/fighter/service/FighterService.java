@@ -3,6 +3,7 @@ package com.fighterapi.fighter.service;
 import com.fighterapi.fighter.dto.FighterDTO;
 import com.fighterapi.fighter.exceptions.FighterNotFoundException;
 import com.fighterapi.fighter.mapper.FighterMapper;
+import com.fighterapi.fighter.model.enums.Belt;
 import com.fighterapi.fighter.model.enums.FighterType;
 import com.fighterapi.fighter.repository.FighterRepository;
 import com.fighterapi.fighter.service.interfaces.IFighterService;
@@ -20,6 +21,7 @@ import java.util.Optional;
 @Service
 public class FighterService implements IFighterService {
 
+    public static final String NO_FIGHTERS_EXCEPTION_MESSAGE = "There was an error fetching the list of fighters ";
     @Autowired
     private FighterRepository fighterRepository;
 
@@ -36,7 +38,7 @@ public class FighterService implements IFighterService {
             return mapper.fightersToFighterDTO(fighterRepository.findAll());
         }
         catch (RuntimeException exception){
-            throw new RuntimeException("There was an error fetching the list of fighters", exception);
+            throw new RuntimeException(NO_FIGHTERS_EXCEPTION_MESSAGE, exception);
         }
     }
 
@@ -47,10 +49,21 @@ public class FighterService implements IFighterService {
             return mapper.fightersToFighterDTO(fighterRepository.findByType(type));
         }
         catch (RuntimeException exception) {
-            log.info("Error fetching list of {} due to {}", type, exception.getMessage());
-            throw new RuntimeException("There was an error fetching the list of " + type, exception);
+            throw new RuntimeException(NO_FIGHTERS_EXCEPTION_MESSAGE + type, exception);
         }
     }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<FighterDTO> listFightersByBelt(Belt belt) {
+        try {
+            return mapper.fightersToFighterDTO(fighterRepository.findByBelt(belt));
+        }
+        catch (RuntimeException exception) {
+            throw new RuntimeException(NO_FIGHTERS_EXCEPTION_MESSAGE + belt, exception);
+        }
+    }
+
 
     @Override
     @Transactional

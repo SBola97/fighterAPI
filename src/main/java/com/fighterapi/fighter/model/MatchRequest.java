@@ -6,6 +6,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -14,9 +15,11 @@ import lombok.NoArgsConstructor;
 public class MatchRequest {
 
     @NotNull(message = "Name is required")
+    @Pattern(regexp = "^[A-Za-zÀ-ÿ]+$", message = "Name must contain only letters")
     private String name;
 
     @NotNull(message = "Lastname is required")
+    @Pattern(regexp = "^[A-Za-zÀ-ÿ]+$", message = "Lastname must contain only letters")
     private String lastName;
 
     @NotNull(message = "Weight is required")

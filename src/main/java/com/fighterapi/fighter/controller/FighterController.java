@@ -1,6 +1,7 @@
 package com.fighterapi.fighter.controller;
 
 import com.fighterapi.fighter.dto.FighterDTO;
+import com.fighterapi.fighter.model.enums.Belt;
 import com.fighterapi.fighter.model.enums.FighterType;
 import com.fighterapi.fighter.model.MatchRequest;
 import com.fighterapi.fighter.service.FighterService;
@@ -28,9 +29,14 @@ public class FighterController {
         return fighterService.listFighters();
     }
 
-    @GetMapping("/list/{type}")
+    @GetMapping("/list/type/{type}")
     public List<FighterDTO> listByType(@PathVariable (value = "type") FighterType type){
         return fighterService.listFightersByType(type);
+    }
+
+    @GetMapping("/list/belt/{belt}")
+    public List<FighterDTO> listByBelt(@PathVariable (value = "belt") Belt belt){
+        return fighterService.listFightersByBelt(belt);
     }
 
     @PostMapping("/create")
