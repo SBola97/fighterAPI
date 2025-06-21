@@ -7,6 +7,7 @@ import com.fighterapi.fighter.model.MatchRequest;
 import com.fighterapi.fighter.service.FighterService;
 import com.fighterapi.fighter.service.MatchMakingService;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -14,15 +15,14 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/fighterAPI/fighters")
 @CrossOrigin(origins = "http://localhost:5173" )
 public class FighterController {
 
-    @Autowired
-    private FighterService fighterService;
+    private final FighterService fighterService;
 
-    @Autowired
-    private MatchMakingService matchMakingService;
+    private final MatchMakingService matchMakingService;
 
     @GetMapping("/list")
     private List<FighterDTO> listFighters(){

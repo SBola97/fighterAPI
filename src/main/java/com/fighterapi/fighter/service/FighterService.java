@@ -7,8 +7,8 @@ import com.fighterapi.fighter.model.enums.Belt;
 import com.fighterapi.fighter.model.enums.FighterType;
 import com.fighterapi.fighter.repository.FighterRepository;
 import com.fighterapi.fighter.service.interfaces.IFighterService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,17 +19,16 @@ import java.util.Optional;
 
 @Slf4j
 @Service
+@RequiredArgsConstructor
 public class FighterService implements IFighterService {
 
     public static final String NO_FIGHTERS_EXCEPTION_MESSAGE = "There was an error fetching the list of fighters ";
-    @Autowired
-    private FighterRepository fighterRepository;
 
-    @Autowired
-    private BeltValidator beltValidator;
+    private final FighterRepository fighterRepository;
 
-    @Autowired
-    private FighterMapper mapper;
+    private final BeltValidator beltValidator;
+
+    private final FighterMapper mapper;
 
     @Override
     @Transactional(readOnly = true)
@@ -74,6 +73,7 @@ public class FighterService implements IFighterService {
         }
         var fighter = mapper.fighterDTOToFighter(fighterDTO);
         fighterRepository.save(fighter);
+        log.info("Fighter {} created successfully", fighterDTO.getFullName());
 
         var resultDTO = mapper.fighterToFighterDTO(fighter);
         getFighterAge(resultDTO);
